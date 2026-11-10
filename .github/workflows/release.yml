@@ -1,0 +1,43 @@
+name: Release Publishing
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build & Publish Release Assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate Canon & Schema Integrity
+        run: |
+          python scripts/validate.py --check
+
+      - name: Generate Checksums
+        run: |
+          sha256sum canon/AGILA-MANIFESTO.eo.md canon/manifesto.eo.yaml > checksums.txt
+          cat checksums.txt
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            canon/AGILA-MANIFESTO.eo.md
+            canon/manifesto.eo.yaml
+            checksums.txt
+          generate_release_notes: true
+          draft: false
+          prerelease: false

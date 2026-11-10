@@ -1,0 +1,29 @@
+# Agila Manifesto v3.1
+
+> The Agila Manifesto is an open-source socio-technical framework formalizing the structural laws that govern software architecture, organizational topologies, and flow. Designed for humans and AI agents with a sole canonical anchor in Esperanto, modifiable only by people.
+
+## Canonical Core
+- [Esperanto Canon](canon/AGILA-MANIFESTO.eo.md): The sole authoritative and invariant source of truth for the Agila Manifesto v3.1.
+- [Structured Machine Summary](canon/manifesto.eo.yaml): Machine-readable YAML specification of the 10 principles, theoretical bases, observable signals, and Conway mapping.
+
+## Multilingual Skills for AI Agents
+- [English Agent Skill](skills/agila-manifesto-en/SKILL.md): Agent instructions, prompt protocols, and translated principles in English.
+- [Spanish Agent Skill](skills/agila-manifesto-es/SKILL.md): Agent instructions, prompt protocols, and translated principles in Spanish.
+- [Esperanto Agent Skill](skills/agila-manifesto-eo/SKILL.md): Canonical agent instructions and prompt protocols in Esperanto.
+
+## OpenWiki Documentation
+- [OpenWiki Index](docs/index.md): Central navigation for architectural and epistemological documentation.
+- [Repository Architecture](docs/architecture.md): Blueprint of canonical parity, agent protocols, and multi-tier structure.
+- [Conway Derivations](docs/conway-derivations.md): Detailed treatise proving how 8 of 10 principles derive from Conway's Law as a design tendency.
+- [Human Implementation Guide](docs/guides/human-guide.md): Practical guidance for applying principles as diagnostic lenses in teams.
+- [AI Agent Operational Protocol](docs/guides/agent-guide.md): Complete protocol for AI agents (read, analyze, cite, propose; human ownership; non-dogma).
+- [Principles Deep Dives](docs/principles/index.md): Architectural deep dives for principles P01 through P10.
+
+## Applied Practice Layer (Uzado)
+- [Uzado Overview](uzado/README.md): Low-protection open practice layer for community case studies.
+- [Boundary Pacts Pattern](uzado/pattern-boundary-pacts.md): Practical implementation of Consumer-Driven Contracts across microservices.
+- [Cognitive Capacity Pattern](uzado/team-cognitive-capacity.md): Identifying and partitioning teams along domain seams.
+
+## Governance & Community
+- [Governance Policy](GOVERNANCE.md): 3-tier governance model (Fundamento, Tradukoj, Uzado) and SemVer rules for canon evolution.
+- [Agent Guidelines](AGENTS.md): Operational boundaries and proposal schema for autonomous coding agents.

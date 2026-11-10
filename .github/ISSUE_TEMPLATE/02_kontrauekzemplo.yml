@@ -1,0 +1,66 @@
+name: "02. Raporti Kontraŭekzemplon / Report a Counterexample"
+description: "'Un contraejemplo es un regalo / Kontraŭekzemplo estas donaco / A counterexample is a gift.' Challenge a principle with empirical evidence."
+title: "[Counterexample]: "
+labels: ["counterexample", "tier-1:canon", "empirical-evidence"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### *"Un contraejemplo es un regalo / Kontraŭekzemplo estas donaco / A counterexample is a gift."*
+        The Agila Manifesto principles are descriptive scientific lenses, not dogmas.
+        When empirical reality contradicts a principle or reveals unintended friction, reporting that counterexample allows the community to refine the principle's boundary conditions.
+
+  - type: dropdown
+    id: targeted_principle
+    attributes:
+      label: "Defiita Principo / Principle Challenged"
+      description: "Select which canonical principle is challenged by your observation."
+      options:
+        - "P01. Ĉiu sistemo spegulas la komunikan strukturon de siaj kreintoj (Conway's Law / Homomorphism)"
+        - "P02. Ĉiu decida unuo havas finian kapaciton (Finite Capacity / Cognitive Load)"
+        - "P03. Stabilaj sistemoj estas fortaj ene kaj malfortaj trans la limoj (Stable Boundaries / Pacts)"
+        - "P04. La efektiva interfaco estas ĉio observebla (Effective Interface / Observability)"
+        - "P05. Fidindeco naskiĝas el redundo (Reliability via Redundancy)"
+        - "P06. Fluon regas la atendo, ne la peno (Flow governed by waiting / Queueing)"
+        - "P07. Lernanta sistemo ŝanĝas sian strukturon, ne nur siajn agojn (Double-loop learning)"
+        - "P08. Ĉiu agento estas parto de la komunika strukturo (AI Agents in Structure)"
+        - "P09. En komplekseco la kompreno sekvas la agon (Complexity & Probes)"
+        - "P10. Sistemo en uzo degradiĝas sen daŭra prizorgado (Continuous Care / Lehman's Laws)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: empirical_context
+    attributes:
+      label: "Kunteksto kaj Observita Realeco / Context & Empirical Observation"
+      description: "Describe the real-world software architecture, organizational structure, team dynamics, or system environment where this occurred."
+      placeholder: "In our organization / architecture, we observed that..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: contradiction_details
+    attributes:
+      label: "Kial la Principo Rompiĝis / Why the Principle Failed or Mispredicted"
+      description: "Explain why the theoretical base or observable signal did not hold, or where following the principle produced perverse outcomes."
+      placeholder: "Despite applying P0X, the system experienced..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested_refinement
+    attributes:
+      label: "Proponita Rafinado / Suggested Boundary Refinement"
+      description: "How should the principle's scope, boundary conditions, or wording be refined to account for this counterexample?"
+      placeholder: "We suggest qualifying the principle with..."
+    validations:
+      required: false
+
+  - type: input
+    id: submitter
+    attributes:
+      label: "Submetinto / Submitter Handle"
+      description: "Your GitHub handle or contact identity."
+      placeholder: "@username"
+    validations:
+      required: true

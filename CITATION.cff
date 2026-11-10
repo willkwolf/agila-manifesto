@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use or cite the Agila Manifesto in your academic or professional research, please cite it using the following metadata."
+title: "Agila Manifesto: Socio-technical Foundations for Software Architecture"
+abstract: "An international, open-source socio-technical framework establishing 10 principles grounded in systems theory, queueing models, and Conway's Law for human and AI agent collaboration, with its authoritative canonical anchor in Esperanto."
+version: 3.1.0
+date-released: 2026-11-10
+license: CC-BY-4.0
+repository-code: "https://github.com/willkwolf/agila-manifesto"
+url: "https://github.com/willkwolf/agila-manifesto"
+keywords:
+  - agile
+  - manifesto
+  - esperanto
+  - conways-law
+  - software-architecture
+  - ai-agents
+  - agent-skills
+  - complexity
+authors:
+  - family-names: Wolf
+    given-names: Will
+    alias: willkwolf

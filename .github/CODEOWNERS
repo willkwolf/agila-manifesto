@@ -1,0 +1,24 @@
+# GitHub CODEOWNERS for Agila Manifesto v3.1
+# Granular code ownership mapped directly to the 3-tier governance model.
+
+# Global default owners
+*                           @willkwolf
+
+# Tier 1: Canon (strictly human stewards, high protection)
+/canon/                     @willkwolf
+
+# Tier 2: Skills and translations (language maintainers and reviewers)
+/skills/agila-manifesto-eo/ @willkwolf
+/skills/agila-manifesto-en/ @willkwolf
+/skills/agila-manifesto-es/ @willkwolf
+/i18n/                      @willkwolf
+
+# Tier 3: Uzado layer (open community contributions)
+/uzado/                     @willkwolf
+
+# Documentation & OpenWiki
+/docs/                      @willkwolf
+
+# Tooling, automation scripts, and CI workflows
+/scripts/                   @willkwolf
+/.github/                   @willkwolf

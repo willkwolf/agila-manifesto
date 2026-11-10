@@ -1,0 +1,59 @@
+name: "04. Korekti Tradukon / Fix Existing Translation"
+description: "Suggest a correction or improvement to an existing translation skill (Tier 2: Tradukoj)."
+title: "[Translation Fix]: "
+labels: ["tier-2:translation", "translation-fix"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Tier 2 (Tradukoj) Translation Correction
+        Use this template to propose fixes to grammatical errors, phrasing nuances, or drift in existing translations.
+
+  - type: dropdown
+    id: target_language
+    attributes:
+      label: "Celtrafa Lingvo / Target Language"
+      description: "Select the language skill being updated."
+      options:
+        - "Esperanto (skills/agila-manifesto-eo/SKILL.md)"
+        - "English (skills/agila-manifesto-en/SKILL.md)"
+        - "Español (skills/agila-manifesto-es/SKILL.md)"
+        - "Other / Alia"
+    validations:
+      required: true
+
+  - type: input
+    id: affected_principle
+    attributes:
+      label: "Tuŝita Principo aŭ Sekcio / Affected Principle or Section"
+      description: "e.g., P03, P07, Frontmatter metadata, Agent Protocol"
+      placeholder: "P04"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_text
+    attributes:
+      label: "Nuna Teksto / Current Wording"
+      description: "The text as it currently appears in the repository."
+      placeholder: "Paste current text here..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_text
+    attributes:
+      label: "Proponita Korekto / Proposed Correction"
+      description: "Your recommended wording improvement."
+      placeholder: "Paste proposed correction here..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: "Semantika Kialo / Semantic Rationale"
+      description: "Why does this correction better preserve the meaning of the canonical Esperanto text?"
+      placeholder: "This correction aligns better with the canon because..."
+    validations:
+      required: true

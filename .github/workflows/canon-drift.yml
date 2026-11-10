@@ -1,0 +1,108 @@
+name: Canon Drift Detection
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'canon/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  detect-drift:
+    name: Check Translation Drift Against Canon
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Detect Stale Translations and Notify
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python - << 'EOF'
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import re
+          import subprocess
+          import sys
+
+          repo_root = pathlib.Path(".")
+          canon_file = repo_root / "canon" / "AGILA-MANIFESTO.eo.md"
+
+          with open(canon_file, "rb") as f:
+              canon_sha = hashlib.sha256(f.read()).hexdigest()
+
+          skills_dir = repo_root / "skills"
+          stale_langs = []
+
+          for skill in skills_dir.glob("agila-manifesto-*/SKILL.md"):
+              content = skill.read_text(encoding="utf-8")
+              m_sha = re.search(r'canon_sha256:\s*["\']?([a-fA-F0-9]{64})["\']?', content)
+              m_lang = re.search(r'lang:\s*["\']?([a-z]{2,3})["\']?', content)
+              if m_sha and m_lang:
+                  lang = m_lang.group(1)
+                  skill_sha = m_sha.group(1)
+                  if skill_sha.lower() != canon_sha.lower():
+                      stale_langs.append((lang, skill.name, skill_sha))
+
+          print(f"Current Canon SHA-256: {canon_sha}")
+          if not stale_langs:
+              print("No stale translations detected. All skills match canon.")
+              sys.exit(0)
+
+          print(f"Detected {len(stale_langs)} drifted translations: {[l[0] for l in stale_langs]}")
+
+          for lang, skill_name, skill_sha in stale_langs:
+              label_drift = "i18n-drift"
+              label_lang = f"lang:{lang}"
+              title = f"[i18n-drift] Translation '{lang}' out of sync with canon v3.1"
+              body = (
+                  f"### Translation Drift Detected for `{lang}`\n\n"
+                  f"The canonical Esperanto text in `canon/AGILA-MANIFESTO.eo.md` has evolved.\n\n"
+                  f"- **Current Canon SHA-256**: `{canon_sha}`\n"
+                  f"- **Skill Declared SHA-256**: `{skill_sha}`\n\n"
+                  f"#### Action Required\n"
+                  f"1. Update `skills/agila-manifesto-{lang}/SKILL.md` to reflect any changes in canon.\n"
+                  f"2. Update frontmatter `canon_sha256: \"{canon_sha}\"`.\n"
+                  f"3. Run `python scripts/validate.py --update` to refresh `i18n/STATUS.md`.\n"
+                  f"4. Submit a PR with `Human-owner: @username`.\n"
+              )
+
+              # Check existing open issues using gh CLI if available
+              try:
+                  res = subprocess.run(
+                      ["gh", "issue", "list", "--label", label_drift, "--label", label_lang, "--state", "open", "--json", "number"],
+                      capture_output=True, text=True, check=False
+                  )
+                  if res.returncode == 0:
+                      issues = json.loads(res.stdout) if res.stdout.strip() else []
+                      if issues:
+                          issue_num = issues[0]["number"]
+                          comment = f"Notice: Canon updated again. Current SHA-256 is now `{canon_sha}`."
+                          subprocess.run(["gh", "issue", "comment", str(issue_num), "--body", comment], check=False)
+                          print(f"Updated existing issue #{issue_num} for lang '{lang}'.")
+                          continue
+
+                  # Create new issue
+                  subprocess.run([
+                      "gh", "issue", "create",
+                      "--title", title,
+                      "--body", body,
+                      "--label", f"{label_drift},{label_lang}"
+                  ], check=False)
+                  print(f"Created drift tracking issue for lang '{lang}'.")
+              except Exception as e:
+                  print(f"Error handling issue for lang '{lang}': {e}")
+          EOF

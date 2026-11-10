@@ -1,0 +1,81 @@
+name: PR Validation & Integrity CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Autonomous Validation & Link Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run validate.py --check
+        run: |
+          python scripts/validate.py --check
+
+      - name: Verify Internal Markdown Links
+        run: |
+          python - << 'EOF'
+          import os
+          import re
+          import sys
+          import pathlib
+
+          root = pathlib.Path(".")
+          errors = []
+          md_files = list(root.glob("**/*.md"))
+
+          for md in md_files:
+              # Skip git and hidden files
+              if ".git" in md.parts or ".agents" in md.parts:
+                  continue
+              try:
+                  content = md.read_text(encoding="utf-8")
+              except Exception as e:
+                  errors.append(f"Cannot read {md}: {e}")
+                  continue
+
+              # Find [text](link) patterns
+              links = re.findall(r'\[([^\]]+)\]\(([^)]+)\)', content)
+              for text, target in links:
+                  target = target.strip()
+                  # Skip external, anchors, mailto, and placeholders
+                  if target.startswith(("http://", "https://", "#", "mailto:", "sidecar://")):
+                      continue
+                  # Strip anchor
+                  clean_target = target.split("#")[0]
+                  if not clean_target:
+                      continue
+                  # Resolve relative path
+                  resolved = (md.parent / clean_target).resolve()
+                  if not resolved.exists():
+                      errors.append(f"Broken link in {md}: '{target}' -> {resolved}")
+
+          if errors:
+              print(f"FAILED: Found {len(errors)} broken internal links:")
+              for err in errors:
+                  print(f"  - {err}")
+              sys.exit(1)
+          else:
+              print("SUCCESS: All internal markdown links resolve correctly.")
+          EOF
+
+      - name: Run Test Suite
+        run: |
+          python -m unittest discover -s tests -p "test_*.py"

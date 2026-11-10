@@ -1,0 +1,79 @@
+name: "01. Propono por Ŝanĝo al la Kanono / Canon Proposal"
+description: "Propose an evolution, addition, or refinement to the canonical Esperanto text (Tier 1: Fundamento)."
+title: "[Canon Proposal]: "
+labels: ["tier-1:canon", "rfc"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Tier 1 (Fundamento) Canon Evolution Proposal
+        Changes to `canon/AGILA-MANIFESTO.eo.md` govern the sovereign source of truth.
+        All proposals require a scientific/theoretical base (`Bazo`), an observable signal (`Signalo`), counterexample evaluation, and must undergo a **minimum 14-day public deliberation** period with approval from at least 2 human stewards.
+
+  - type: textarea
+    id: proposed_text
+    attributes:
+      label: "Proponita Esperanta Teksto / Proposed Text"
+      description: "Verbatim text in Esperanto for the proposed principle or modification."
+      placeholder: "X. Titolo de la principo...\nDeklaro...\nBazo: ...\nSignalo: ..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: bazo_status
+    attributes:
+      label: "Statuso de la Bazo / Theoretical Base Status"
+      description: "Categorize the theoretical grounding."
+      options:
+        - "Teorema (Theorem — mathematically/formally proven)"
+        - "Modelo (Model — established theoretical formulation)"
+        - "Tendencia empírica (Empirical Tendency — observed pattern across software systems)"
+        - "Interpretación (Interpretation — pragmatic socio-technical lens)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: bazo_description
+    attributes:
+      label: "Bazo: Teoria aŭ Scienca Fono / Theoretical Basis"
+      description: "Explain the underlying theory, graph homomorphism, queueing formula, or empirical law."
+      placeholder: "e.g., Graph theory homomorphism, Little's Law, Lehman's software evolution laws..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: signalo_description
+    attributes:
+      label: "Signalo: Observebla Indikilo / Observable Signal"
+      description: "Describe the observable symptoms or diagnostic signals in teams/systems when violated."
+      placeholder: "e.g., Cross-team coordination meetings increase non-linearly..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: kontrauekzemploj
+    attributes:
+      label: "Analizo de Kontraŭekzemploj / Counterexample Analysis"
+      description: "Under what boundary conditions might this principle fail, lead to perverse incentives, or require nuance?"
+      placeholder: "A counterexample is a gift. Describe boundary conditions..."
+    validations:
+      required: true
+
+  - type: input
+    id: human_owner
+    attributes:
+      label: "Homa Posedanto / Human Owner"
+      description: "GitHub handle of the human sponsor responsible for this proposal."
+      placeholder: "@username"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: governance_confirm
+    attributes:
+      label: "Gobernanza / Governance Confirmations"
+      options:
+        - label: "Mi komprenas, ke ĉi tiu propono postulas almenaŭ 14 tagojn da publika diskutado kaj aprobon de almenaŭ 2 homaj gardantoj (human stewards)."
+          required: true
+        - label: "Ĉi tiu propono estas submetita kiel priskriba lenso, ne kiel deviga dogmo aŭ atestilo."
+          required: true

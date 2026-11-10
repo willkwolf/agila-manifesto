@@ -1,0 +1,65 @@
+name: "05. Kontribuo al Uzado / Uzado Layer Contribution"
+description: "Submit a practical pattern, field case study, or anti-pattern to the open uzado/ layer (Tier 3: Uzado)."
+title: "[Uzado Contribution]: "
+labels: ["tier-3:uzado", "case-study"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Tier 3 (Uzado) Community Contribution
+        The `uzado/` layer collects concrete implementations, diagnostic field stories, architectural patterns, and anti-patterns.
+        Under Tier 3 governance, 1 review suffices for acceptance. Submissions must be strictly non-commercial.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Kategorio / Category"
+      options:
+        - "Architectural Pattern (uzado/patterns/)"
+        - "Field Case Study (uzado/case-studies/)"
+        - "Anti-Pattern Analysis (uzado/anti-patterns/)"
+        - "Diagnostic Tool / Template (uzado/templates/)"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: principles_illustrated
+    attributes:
+      label: "Ilustritaj Principoj / Principles Illustrated"
+      options:
+        - label: "P01. Ĉiu sistemo spegulas la komunikan strukturon (Conway's Law / Homomorphism)"
+        - label: "P02. Ĉiu decida unuo havas finian kapaciton (Cognitive Load / Seams)"
+        - label: "P03. Stabilaj sistemoj estas fortaj ene kaj malfortaj trans limoj (Pacts / Boundary Covenants)"
+        - label: "P04. La efektiva interfaco estas ĉio observebla (Hyrum's Law / Implicit Coupling)"
+        - label: "P05. Fidindeco naskiĝas el redundo (Redundancy / Degeneracy)"
+        - label: "P06. Fluon regas la atendo, ne la peno (Little's Law / Queue Handoffs)"
+        - label: "P07. Lernanta sistemo ŝanĝas sian strukturon (Double-Loop Learning)"
+        - label: "P08. Ĉiu agento estas parto de la komunika strukturo (AI Agents in Structure)"
+        - label: "P09. En komplekseco la kompreno sekvas la agon (Safe-to-fail Probes / Epistemology)"
+        - label: "P10. Sistemo en uzo degradiĝas sen daŭra prizorgado (Continuous Care / Lehman's Laws)"
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: "Resumo de la Kazo / Case Summary"
+      description: "Describe the engineering context, team topology, organizational friction, and intervention applied."
+      placeholder: "In our engineering organization..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcomes
+    attributes:
+      label: "Observeblaj Rezultoj / Observable Outcomes"
+      description: "What changed? What metrics or signals shifted after the structural intervention?"
+      placeholder: "Cycle time dropped, cross-team handoffs were reduced..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: non_commercial
+    attributes:
+      label: "Non-Commercial Confirmation"
+      options:
+        - label: "Mi konfirmas, ke ĉi tiu kontribuo estas libera de komerca reklamado aŭ vendo de servoj."
+          required: true

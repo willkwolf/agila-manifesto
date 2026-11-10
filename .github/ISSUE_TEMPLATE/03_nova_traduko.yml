@@ -1,0 +1,61 @@
+name: "03. Proponi Novan Tradukon / Propose New Translation"
+description: "Bootstrap a new language translation skill under Tier 2 (Tradukoj)."
+title: "[New Translation]: "
+labels: ["tier-2:translation", "i18n"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Tier 2 (Tradukoj) New Translation Proposal
+        Translations expand the Agila Manifesto to practitioners and AI agents worldwide.
+        Translations are derivative works: the canonical Esperanto text in `canon/AGILA-MANIFESTO.eo.md` remains authoritative.
+
+  - type: input
+    id: language_name
+    attributes:
+      label: "Lingva Nomo / Language Name (English and Native)"
+      description: "e.g., French / Français, German / Deutsch, Japanese / 日本語"
+      placeholder: "French / Français"
+    validations:
+      required: true
+
+  - type: input
+    id: iso_code
+    attributes:
+      label: "ISO 639-1 Kodo / Language Code"
+      description: "2 or 3-letter lowercase ISO code (e.g., fr, de, ja, zh, pt)."
+      placeholder: "fr"
+    validations:
+      required: true
+
+  - type: input
+    id: lead_translator
+    attributes:
+      label: "Ĉefa Tradukisto / Lead Translator GitHub Handle"
+      description: "GitHub username of the primary maintainer for this language skill."
+      placeholder: "@username"
+    validations:
+      required: true
+
+  - type: input
+    id: native_reviewer
+    attributes:
+      label: "Gepatra Revizianto / Native Reviewer GitHub Handle"
+      description: "GitHub username of the native speaker reviewer providing second signoff."
+      placeholder: "@native-reviewer"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Translating Requirements Checklist"
+      options:
+        - label: "Mi kopiis la ŝablonon el `i18n/_template/SKILL.template.md` al `skills/agila-manifesto-<lang>/SKILL.md`."
+          required: true
+        - label: "Ĉiuj 10 principoj (P01–P10) estas tradukitaj konservante la kanonajn identigilojn."
+          required: true
+        - label: "La teksto inkluzivas la eksplicitan averton, ke la teksto estas derivita kaj la esperanta kanono prevalas."
+          required: true
+        - label: "La kodo konservas la identan 4-verban agentan protokolon (legi, analizi, citi, proponi)."
+          required: true
