@@ -2,21 +2,20 @@
 
 **Deliver quality software.**
 
-A living socio-technical manifesto, readable by humans and machines, with its sole canonical anchor in Esperanto, modifiable only by people.
+A living socio-technical manifesto of 10 invariant principles for distributed systems and human-agent teams.
 
 ---
 
 ## 1. Deliver quality software
 
-The **Agila Manifesto** (v3.1) is an international, open-source socio-technical framework for delivering quality software in modern distributed organizations and complex adaptive systems.
+The **Agila Manifesto** (v3.1) is an open-source socio-technical framework for delivering quality software in modern distributed organizations.
 
-Unlike traditional methodologies that dictate ceremonies or dogmatic practices, the Agila Manifesto formalizes the structural invariants that govern software architecture, organizational topologies, and collaborative flow. It bridges organizational design and system architecture under the mathematical reality of Conway's Law and systems theory.
+When software systems fail to scale or delivery stalls, the root cause is rarely algorithmic—it is structural. The Agila Manifesto formalizes the empirical invariants that govern system architecture, organizational communication, and collaborative flow under the mathematical reality of Conway's Law and systems theory.
 
-Key characteristics:
-- **Living Manifesto**: Evolving continuously under rigorous public governance, open counterexamples, and empirical observation.
-- **Dual-Audience Architecture**: Engineered from day one to be equally consumable by human teams and autonomous AI agents.
-- **Sole Sovereign Canon in Esperanto**: Anchored in a politically neutral international language (`canon/AGILA-MANIFESTO.eo.md`) to establish an equitable foundation free from cultural or linguistic hegemony.
-- **Human Sovereignty**: While machines can read, analyze, cite, and propose structural improvements, only humans hold the authority to approve and evolve the canon.
+- **The Problem It Solves**: Architectural misalignments, cognitive overload in teams, unpacted inter-service boundaries, queue explosions at handoffs, and unregulated AI agent outputs.
+- **Dual Audience**: Built from day one to be directly understood and applied by human teams and autonomous AI agents.
+- **Sole Canon in Esperanto**: Anchored in a politically neutral international language ([`canon/AGILA-MANIFESTO.eo.md`](canon/AGILA-MANIFESTO.eo.md)) to guarantee an equitable foundation free from cultural bias.
+- **Human Sovereignty**: AI agents read, analyze, cite, and propose; only humans approve changes to the canon.
 
 ---
 
@@ -28,136 +27,117 @@ Key characteristics:
 [![CI Validation](https://github.com/willkwolf/agila-manifesto/actions/workflows/pr-validation.yml/badge.svg)](https://github.com/willkwolf/agila-manifesto/actions)
 [![Languages](https://img.shields.io/badge/languages-3_available-informational.svg)](i18n/STATUS.md)
 
-*Note on Badge Transparency*: All badges displayed above reflect verified repository attributes. In accordance with our honesty mandate, this repository rejects fictitious vanity badges, purchased stars, or synthetic endorsements.
-
 ---
 
 ## 3. In 30 seconds
 
-- **Socio-technical Foundations**: Grounded in systems theory, queueing models, and Conway's Law rather than subjective methodologies.
-- **Dual-Audience Architecture**: Designed for humans and AI agents with a single neutral canonical source in Esperanto and machine-readable YAML.
-- **Descriptive, Non-Dogmatic Lenses**: Analytical diagnostics to assess organizational and architectural friction, never a checklist or certification scheme.
+- **Structural Invariants, Not Agile Ceremonies**: Replaces process dogma with empirical laws (Conway's Law, Little's Law, Ashby's requisite variety, bounded rationality).
+- **Diagnostic Lenses, Not Scoring Rubrics**: Analytical lenses to identify friction in architectures and team topologies, never a certification scheme or developer ranking tool.
+- **Human-Agent Collaboration**: Defines explicit boundary pacts and human ownership rules for AI coding agents participating in modern engineering workflows.
 
 ---
 
 ## 4. The 10 Principles at a Glance
 
-> **Declaration on Conway Derivations**: 8 of 10 principles (P01 through P08) derive from Conway's Law (1968) or its mathematical and graph-theoretical corollaries (communication graph homomorphism, channel capacity, near-decomposability, interface visibility, redundant paths, queueing across handoffs, structural adaptation, and multi-agent graph membership). This is declared with full transparency as a **design tendency**, not an immutable physical rule. Principles P09 (Complexity & Probes) and P10 (System Degradation) derive respectively from Complex Adaptive Systems / Epistemology and Lehman's Laws of Software Evolution.
+> **Conway Derivation Notice**: 8 of 10 principles (P01 through P08) derive from Conway's Law (1968) or its mathematical corollaries. This is declared with full transparency as an empirical **design tendency**, not an immutable dogma. Principles P09 (Complexity) and P10 (Evolution) derive from complex adaptive systems and Lehman's laws.
 
-| # | Principle | Theoretical Base Status | Derives from Conway? |
-|---|-----------|-------------------------|----------------------|
-| [**P01**](docs/principles/p01.md) | Every system mirrors the communication structure of its creators | Theorem / Model (Homomorphism between communication graph and module graph; inverse Conway maneuver) | **Yes** (Direct Conway's Law) |
-| [**P02**](docs/principles/p02.md) | Every decision unit has finite capacity | Model / Theorem (Shannon channel capacity, Simon's bounded rationality, $O(n^2)$ communication graph edges) | **Yes** (Cognitive load & communication scaling corollary) |
-| [**P03**](docs/principles/p03.md) | Stable systems are strong inside and weak across boundaries | Model / Theorem (Simon's nearly decomposable systems, Ashby's law of requisite variety, type theory for pacts) | **Yes** (System modularity & boundary covenant corollary) |
-| [**P04**](docs/principles/p04.md) | The effective interface is everything observable | Model / Empirical Tendency (Observational equivalence, Hyrum's Law) | **Yes** (Interface boundary & implicit coupling corollary) |
-| [**P05**](docs/principles/p05.md) | Reliability is born from redundancy | Theorem / Model (Von Neumann synthesis of reliable organisms from unreliable components, biological degeneracy) | **Yes** (Communication graph topology & bus factor corollary) |
-| [**P06**](docs/principles/p06.md) | Flow is governed by waiting, not effort | Theorem / Model (Little's Law $L = \lambda W$, Kingman's formula for queue waiting times) | **Yes** (Handoff friction across organizational boundaries) |
-| [**P07**](docs/principles/p07.md) | A learning system changes its structure, not just its actions | Model / Interpretation (Argyris & Schön double-loop learning, Ashby's requisite variety under environmental shift) | **Yes** (Inverse structural realignment corollary) |
-| [**P08**](docs/principles/p08.md) | Every agent is part of the communication structure | Model (Graph theory with human and AI agent nodes, boundary traversal via explicit pacts) | **Yes** (Socio-technical graph expansion to artificial agents) |
-| [**P09**](docs/principles/p09.md) | In complexity, understanding follows action | Empirical Tendency / Model (Complex adaptive systems, Popperian falsifiability, Goodhart/Campbell's Law) | **No** (Complexity science & scientific epistemology) |
-| [**P10**](docs/principles/p10.md) | A system in use degrades without continuous maintenance | Empirical Tendency (Lehman's Laws of Software Evolution, open thermodynamic non-equilibrium systems) | **No** (Lehman's evolutionary dynamics) |
+| # | Principle | Theoretical Foundation (`Bazo`) | Derives from Conway? |
+|---|-----------|----------------------------------|----------------------|
+| [**P01**](docs/principles/p01.md) | Every system mirrors the communication structure of its creators | Homomorphism between communication graph and system module graph; inverse Conway maneuver | **Yes** (Direct Conway's Law) |
+| [**P02**](docs/principles/p02.md) | Every decision unit has finite capacity | Shannon channel capacity, Simon's bounded rationality, $O(n^2)$ communication growth | **Yes** (Cognitive load corollary) |
+| [**P03**](docs/principles/p03.md) | Stable systems are strong inside and weak across boundaries | Simon's nearly decomposable systems, Ashby's requisite variety, boundary pacts | **Yes** (Modularity corollary) |
+| [**P04**](docs/principles/p04.md) | The effective interface is everything observable | Observational equivalence, Hyrum's Law (implicit dependencies) | **Yes** (Interface boundary corollary) |
+| [**P05**](docs/principles/p05.md) | Reliability is born from redundancy | Von Neumann synthesis of reliable systems from unreliable components, degeneracy | **Yes** (Bus-factor topology corollary) |
+| [**P06**](docs/principles/p06.md) | Flow is governed by waiting, not effort | Little's Law ($L = \lambda W$), Kingman's formula for queue waiting times | **Yes** (Handoff friction corollary) |
+| [**P07**](docs/principles/p07.md) | A learning system changes its structure, not just its actions | Argyris & Schön double-loop learning, structural cybernetic adaptation | **Yes** (Inverse structural realignment) |
+| [**P08**](docs/principles/p08.md) | Every agent is part of the communication structure | Graph theory with human and AI agent nodes; boundary traversal requires human pact | **Yes** (Multi-agent network expansion) |
+| [**P09**](docs/principles/p09.md) | In complexity, understanding follows action | Complex adaptive systems, Popperian falsifiability, Goodhart/Campbell's Law | **No** (Complexity science) |
+| [**P10**](docs/principles/p10.md) | A system in use degrades without continuous maintenance | Lehman's Laws of Software Evolution, open thermodynamic dissipative systems | **No** (Lehman's software dynamics) |
 
-For comprehensive mathematical foundations, proof sketches, and operational signals, see [docs/conway-derivations.md](docs/conway-derivations.md) and individual deep dives in [docs/principles/](docs/principles/).
+For complete mathematical foundations and proof sketches, see [docs/conway-derivations.md](docs/conway-derivations.md) and [docs/principles/](docs/principles/).
 
 ---
 
 ## 5. Distinctions from the 2001 Agile Manifesto
 
-The Agila Manifesto stands upon the historic foundations laid by the 2001 Agile Manifesto, which liberated software engineering from bureaucratic waterfall processes by centering individuals, working software, collaboration, and responding to change.
+The Agila Manifesto builds upon the foundations of the 2001 Agile Manifesto while addressing the realities of modern software engineering:
 
-Over the past quarter-century, the engineering landscape has evolved fundamentally:
-1. **From Subjective Values to Structural Invariants**: While the 2001 manifesto expressed human preferences ("value X over Y"), the Agila Manifesto identifies formal socio-technical laws (homomorphisms, graph capacities, queueing limits) that govern whether software delivery succeeds or stalls.
-2. **From Human-Only Teams to Human-Agent Ecosystems**: Autonomous AI agents, code generators, and algorithmic synthesizers now participate actively in the communication and development graph. Principle 8 formally integrates non-human agents with explicit boundary pacts and human ownership.
-3. **From Process Dogma to Diagnostic Lenses**: Rather than providing a template for agile meetings or commercial certification schemes, the Agila Manifesto provides analytical lenses to diagnose architectural friction and organizational debt.
-4. **Observable Signals Over Aspirational Slogans**: Every principle pairs a theoretical grounding (`Bazo`) with an observable empirical indicator (`Signalo`), enabling teams to identify structural dysfunction before failure cascades occur.
+1. **Structural Invariants Over Subjective Values**: Rather than preferences ("valuing X over Y"), it identifies systemic laws (graph homomorphisms, queueing limits) that govern whether architectures succeed or stall.
+2. **Human-Agent Collaboration**: Explicitly incorporates autonomous AI agents into the communication graph with mandatory human ownership (P08).
+3. **Observable Signals Over Aspirational Slogans**: Every principle pairs a theoretical basis (`Bazo`) with an observable symptom (`Signalo`) to diagnose debt before failures cascade.
 
 ---
 
 ## 6. Status, Without Dogma, Minimal Formal Language, Why Esperanto
 
-*(Derived and adapted into English from the canonical declarations)*
+*(Derived from the canonical Esperanto declarations)*
 
-### Status
-The Agila Manifesto v3.1 is an open, living proposal. It does not present itself as an official industry standard or a corporate mandate, but as an empirical and theoretical foundation continuously refined through public observation and community counterexamples.
-
-### Without Dogma
-The manifesto rejects dogmatism in all forms. Its principles must **never** be used as:
-- Mandatory compliance checklists or prescriptive organizational commandments.
-- Criteria for employee ranking, developer evaluation, or performance grading.
-- Proprietary commercial certification products or consultancy licensing gates.
-
-### Minimal Formal Language
-Formalisms—including graph theory, Shannon information theory, Little's Law, and Ashby's cybernetic models—are used strictly where necessary to prevent semantic ambiguity. We employ formal language as a tool of precision, not academic pretension.
-
-### Why Esperanto?
-Esperanto serves as the sole canonical anchor (`canon/AGILA-MANIFESTO.eo.md`) for three principled reasons:
-1. **Linguistic Neutrality**: It belongs equally to all contributors worldwide, avoiding cultural privilege and semantic bias inherent in dominant geopolitical languages.
-2. **Structural Regularity**: Its agglutinative and unambiguous morphology ensures precise, stable definitions of socio-technical concepts.
-3. **Deliberate Consensus**: Requiring canonical changes to be articulated and reviewed in a shared bridge language fosters intentional, thoughtful consensus and prevents unexamined churn.
+- **Living Status**: An open, living proposal (v3.1) refined through community observation and counterexamples.
+- **Without Dogma**: Principles are diagnostic lenses, never compliance checklists, performance metrics, or certification schemes.
+- **Minimal Formal Language**: Graph theory, queueing models, and cybernetics are used strictly for precision, avoiding unnecessary academic jargon.
+- **Why Esperanto?**: Esperanto provides a politically neutral international anchor ([`canon/AGILA-MANIFESTO.eo.md`](canon/AGILA-MANIFESTO.eo.md)) that prevents cultural hegemony and ensures deliberate, conscious consensus for any structural change.
 
 ---
 
-## 7. For Humans
+## 7. How to Use the Manifesto (For Humans)
 
-The manifesto is designed to help human software engineers, architects, managers, and organizational designers diagnose systemic friction.
+Apply the principles as **diagnostic lenses** whenever your team or architecture encounters friction:
 
-### The Tripartite Diagnostic Structure
-Each principle is articulated through three distinct components:
-1. **The Statement**: The concise universal socio-technical law or tendency.
-2. **The Grounding (`Bazo`)**: The underlying mathematical theorem, cybernetic model, or empirical trend explaining *why* the phenomenon occurs.
-3. **The Observable Signal (`Signalo`)**: The real-world symptom indicating that a team or architecture is violating this structural boundary.
-
-### Applying the Diagnostic Lenses
-When a team experiences delays, frequent defects, or coordination overhead:
-- Do not add more meetings or bureaucratic gates.
-- Consult the principles as diagnostic lenses: Is cognitive load exceeded (P02)? Are interfaces unpacted (P03)? Are queues exploding due to near-100% resource utilization (P06)?
-- Consult the practical patterns and case studies in the [Open Practice Layer (`uzado/`)](uzado/README.md).
-- Read the detailed human implementation guide in [docs/guides/human-guide.md](docs/guides/human-guide.md).
+- **When to Use**:
+  - **System & Service Design**: Ensuring module boundaries mirror team communication paths (P01, P03).
+  - **Technical Proposals (RFCs / ADRs)**: Evaluating cognitive load, observable coupling, and cross-team dependencies (P02, P04, P06).
+  - **Blocked Delivery Pipelines**: Diagnosing queue bottlenecks and near-100% resource utilization (P06).
+  - **AI Tooling & Agent Integration**: Ensuring AI outputs cross team boundaries only with explicit human review and ownership (P08).
+- **Practical Patterns**: See [Open Practice Layer (`uzado/`)](uzado/README.md) and the [Human Implementation Guide](docs/guides/human-guide.md).
 
 ---
 
-## 8. For AI Agents
+## 8. For AI Agents & Integration
 
-Autonomous agents, coding assistants, and LLM-based tools are first-class participants in the modern development graph.
+The Agila Manifesto is designed to be consumed by AI coding agents as a **complementary contract** during system design, technical proposal reviews, and architectural decision-making.
 
-### How to Install the Skill
-- **Claude Code**: Clone or copy `skills/agila-manifesto-en/` into your local `.claude/skills/agila-manifesto/` directory.
-- **Other AI Agents & Toolchains**: Ingest the machine-readable specifications defined in [AGENTS.md](AGENTS.md) and [llms.txt](llms.txt).
-- **Structured Schema**: Load [canon/manifesto.eo.yaml](canon/manifesto.eo.yaml) for direct programmatic access to all principles, bases, and signals.
+### Quick Installation by Platform
+
+- **Claude Code**:
+  Copy the skill to your project:
+  ```bash
+  mkdir -p .claude/skills/agila-manifesto
+  cp skills/agila-manifesto-en/SKILL.md .claude/skills/agila-manifesto/
+  ```
+- **Google Antigravity**:
+  Add `skills/agila-manifesto-en/SKILL.md` to your workspace skills or link it via `.gemini/antigravity/rules/`.
+- **OpenAI Codex / Cursor / OpenCode**:
+  Point your assistant to [`AGENTS.md`](AGENTS.md) and [`llms.txt`](llms.txt), or load [`canon/manifesto.eo.yaml`](canon/manifesto.eo.yaml) directly.
+- **OpenHarness (`oh`)**:
+  Drop `skills/agila-manifesto-en/` into your OpenHarness skills folder or reference it from your agent harness configuration.
+
+For complete integration patterns and workflows, see the [Agent Integration Strategy Guide](docs/guides/integration-strategy.md).
 
 ### Non-Negotiable Agent Boundaries
-1. **Read, Analyze, Cite, Propose**: Agents are authorized to inspect codebases, analyze communication graphs, cite principles by ID (`P01`–`P10`), and propose refactorings.
-2. **Zero Modification Authority**: Machines cannot modify and never modify the canon, nor approve changes to the canon.
-3. **Mandatory Human Sponsorship**: All agent-generated suggestions must be submitted as proposals tagged with an explicit human sponsor (`Human-owner: @username`).
-4. **Lenses, Never Dogma**: Agents must never evaluate human performance, enforce compliance metrics, or score developer output against these principles.
-
-For full agent operational protocols, see [docs/guides/agent-guide.md](docs/guides/agent-guide.md).
+1. **4 Verbs**: Agents **read** canon, **analyze** systems, **cite** principle IDs (`P01`–`P10`), and **propose** improvements.
+2. **Zero Modification Authority**: Machines cannot modify or approve changes to the canon.
+3. **Mandatory Human Sponsorship**: Every agent recommendation must be tagged with a human sponsor (`Human-owner: @username`).
+4. **No Performance Grading**: Principles must never be used to evaluate or score human developers.
 
 ---
 
 ## 9. Governance
 
-The Agila Manifesto implements a three-tier governance model to balance canonical integrity with open community participation:
+A 3-tier governance model balances canonical integrity with open community participation:
 
-| Tier | Scope | Protection Level | Authorized Actors | Approval Criteria | Deliberation SLA |
-|---|---|---|---|---|---|
-| **Tier 1: Fundamento** | `canon/` | **High ("Jealous")** | Humans only | $\ge 2$ human stewards | Minimum 14 calendar days |
-| **Tier 2: Tradukoj** | `skills/`, `i18n/` | **Medium** | Language maintainers | Maintainer + 1 native reviewer | Standard PR cycle |
-| **Tier 3: Uzado** | `uzado/` | **Low (Open)** | Any contributor | 1 maintainer or peer review | Rapid review |
+| Tier | Scope | Protection | Authorized Actors | Deliberation SLA |
+|---|---|---|---|---|
+| **Fundamento** | `canon/` | **High** | Humans only ($\ge 2$ stewards) | 14-day public discussion |
+| **Tradukoj** | `skills/`, `i18n/` | **Medium** | Language maintainer + native reviewer | Standard PR review |
+| **Uzado** | `uzado/` | **Open** | Any contributor (1 review) | Fast-track |
 
-### Canon Evolution Rules
-Modifications to the canon adhere to strict Semantic Versioning (`vMAJOR.MINOR.PATCH`):
-- **MAJOR**: Adding, deleting, or reversing the fundamental semantic meaning of a principle.
-- **MINOR**: Altering a principle's theoretical base (`Bazo`), observable signal (`Signalo`), or canonical preamble/declaration.
-- **PATCH**: Wording improvements, orthographic adjustments, or typographical corrections in the Esperanto text.
-
-For full governance procedures and single-steward fallback rules, see [GOVERNANCE.md](GOVERNANCE.md).
+Canon modifications follow strict Semantic Versioning (`MAJOR` for principles, `MINOR` for bases/signals, `PATCH` for wording). Details in [GOVERNANCE.md](GOVERNANCE.md).
 
 ---
 
-## 10. Languages & Translation Drift
+## 10. Languages & Translations
 
-Translations are maintained by the global open-source community. Automated CI workflows monitor the canonical SHA-256 hash to immediately flag any language that experiences translation drift.
+Community translations are tracked and monitored by CI against the canonical SHA-256 hash:
 
 <!-- START_TRANSLATION_TABLE -->
 | Lang | Language | Status | Canon Ver | Canon SHA-256 Match | Translators / Reviewers | Skill File |
@@ -167,62 +147,48 @@ Translations are maintained by the global open-source community. Automated CI wo
 | `es` | Español | `draft` | 3.1 | `44dd1dc96687` (Match) | AI Agent (Borrador), @willkwolf | [`skills/agila-manifesto-es/SKILL.md`](skills/agila-manifesto-es/SKILL.md) |
 <!-- END_TRANSLATION_TABLE -->
 
-### Adding a New Language
-To contribute a new translation:
-1. Review the translation guidelines and copy `i18n/_template/SKILL.template.md` to `skills/agila-manifesto-<lang>/SKILL.md`.
-2. Translate all 10 principles preserving canonical IDs `P01` through `P10` and include the mandatory derivative disclaimer.
-3. Open an issue using the [New Translation Issue Template](.github/ISSUE_TEMPLATE/03_nova_traduko.yml).
-4. See [i18n/STATUS.md](i18n/STATUS.md) for the active list of 10 priority sought-after languages.
+To contribute a translation, see [i18n/_template/](i18n/_template/) and [i18n/STATUS.md](i18n/STATUS.md).
 
 ---
 
 ## 11. How to Contribute
 
-We welcome contributions across four distinct avenues:
+- **Propose a Canon Change**: Open a [Canon Proposal Issue](.github/ISSUE_TEMPLATE/01_canon_propono.yml) (14-day public discussion).
+- **Submit a Counterexample**: *"A counterexample is a gift."* Open a [Counterexample Issue](.github/ISSUE_TEMPLATE/02_kontrauekzemplo.yml).
+- **Translate**: Help add or maintain languages using [`i18n/_template/`](i18n/_template/).
+- **Share Usage Patterns**: Contribute real-world case studies or patterns to [`uzado/`](uzado/README.md).
 
-1. **Propose a Canon Change**: Submit an RFC issue using [Canon Proposal Template](.github/ISSUE_TEMPLATE/01_canon_propono.yml). Must include `Bazo`, `Signalo`, address counterexamples, and undergo at least 14 days of public discussion.
-2. **Submit a Counterexample**: *"A counterexample is a gift."* If you discover a context where a principle fails or produces harmful outcomes, open a [Counterexample Issue](.github/ISSUE_TEMPLATE/02_kontrauekzemplo.yml).
-3. **Contribute Translations**: Help maintain or translate new languages using `i18n/_template/`.
-4. **Contribute to Uzado**: Share practical patterns, real-world case studies, or anti-patterns in the [uzado/](uzado/README.md) directory.
-
-All contributors must abide by our [Code of Conduct](CODE_OF_CONDUCT.md). Detailed contribution workflows are documented in [CONTRIBUTING.md](CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ---
 
 ## 12. Versioning, Citation & License
 
-### Versioning
-This repository publishes **Agila Manifesto Version 3.1** (`v3.1.0`). Any release altering canonical principles or documentation follows SemVer conventions documented in [CHANGELOG.md](CHANGELOG.md).
-
-### Citation
-If you cite the Agila Manifesto in academic literature, industry whitepapers, or technical presentations, please consult [CITATION.cff](CITATION.cff) for complete bibliographic metadata:
-```bibtex
-@misc{agila_manifesto_2026,
-  title        = {Agila Manifesto: Socio-technical Foundations for Software Architecture},
-  author       = {Wolf, Will and Contributors},
-  year         = {2026},
-  version      = {3.1.0},
-  url          = {https://github.com/willkwolf/agila-manifesto}
-}
-```
-
-### License
-This project operates under a dual-licensing scheme detailed in [LICENSE](LICENSE):
-- **Documentation, Canon & Content**: Licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE) license.
-- **Automation Scripts & Code**: Licensed under the [MIT License](LICENSE).
+- **Version**: `v3.1.0` ([CHANGELOG.md](CHANGELOG.md)).
+- **Citation**: Bibliographic metadata in [CITATION.cff](CITATION.cff):
+  ```bibtex
+  @misc{agila_manifesto_2026,
+    title        = {Agila Manifesto: Socio-technical Foundations for Software Architecture},
+    author       = {Wolf, Will and Contributors},
+    year         = {2026},
+    version      = {3.1.0},
+    url          = {https://github.com/willkwolf/agila-manifesto}
+  }
+  ```
+- **License**: Dual licensing under [LICENSE](LICENSE) — [CC BY 4.0](LICENSE) for documentation and canon; [MIT](LICENSE) for scripts and tooling.
 
 ---
 
 ## 13. FAQ
 
 ### Does this replace the 2001 Agile Manifesto?
-**No.** The Agila Manifesto does not purport to be an official replacement or regulatory update to the original 2001 Agile Manifesto. Rather, it is an independent evolutionary proposal that builds upon 25 years of empirical progress in distributed computing, team topologies, systems thinking, and artificial intelligence.
+**No.** It is an independent evolutionary proposal incorporating 25 years of empirical progress in distributed computing, team topologies, and AI agents.
 
 ### Why is the canon written in Esperanto?
-Esperanto was created deliberately as a neutral international auxiliary language. Having an invariant canonical version in Esperanto guarantees that no single linguistic culture dominates the manifesto's evolution, ensures that translations are treated with equal gravity, and requires deliberate, conscious consensus for any structural change.
+Esperanto provides a neutral international auxiliary language that prevents cultural hegemony and requires deliberate consensus for structural change.
 
 ### Can an AI agent modify the manifesto?
-**Never.** Autonomous AI agents are valuable partners for reading, parsing, indexing, and identifying potential architectural anti-patterns, but they cannot approve or merge changes into the canon. Every canonical change requires human sponsorship (`Human-owner: @username`) and approval by at least two human stewards.
+**No.** Machines read, analyze, cite, and propose; only humans approve changes to the canon (`Human-owner: @username`).
 
-### Do we have to adopt all ten principles?
-**No.** The Agila Manifesto is deliberately non-dogmatic. The ten principles represent observable socio-technical laws and design tendencies, not a checklist or compliance audit. Teams and organizations should use them as diagnostic lenses to identify where structural misalignment is creating friction.
+### Must teams adopt all ten principles?
+**No.** The manifesto is non-dogmatic. Use the principles as diagnostic lenses where systemic friction arises.

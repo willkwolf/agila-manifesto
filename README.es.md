@@ -28,8 +28,6 @@ Características esenciales:
 [![CI Validation](https://github.com/willkwolf/agila-manifesto/actions/workflows/pr-validation.yml/badge.svg)](https://github.com/willkwolf/agila-manifesto/actions)
 [![Languages](https://img.shields.io/badge/languages-3_available-informational.svg)](i18n/STATUS.md)
 
-*Nota sobre transparencia de insignias*: Todas las insignias mostradas representan atributos verificables del repositorio. Conforme a nuestro principio de honestidad, este repositorio rechaza insignias ficticias, estrellas compradas o avales sintéticos.
-
 ---
 
 ## 3. In 30 seconds

@@ -28,8 +28,6 @@ Male al tradiciaj metodaroj, kiuj trudas ceremoniojn aŭ dogmajn praktikojn, la 
 [![CI Validation](https://github.com/willkwolf/agila-manifesto/actions/workflows/pr-validation.yml/badge.svg)](https://github.com/willkwolf/agila-manifesto/actions)
 [![Languages](https://img.shields.io/badge/languages-3_available-informational.svg)](i18n/STATUS.md)
 
-*Noto pri travideblo de insignoj*: Ĉiuj montritaj insignoj spegulas kontrolitajn deponejajn atributojn. Konforme al nia honesteca mandato, ĉi tiu deponejo malakceptas falsajn insignojn, aĉetitajn stelojn aŭ fabrikitajn subtenojn.
-
 ---
 
 ## 3. In 30 seconds

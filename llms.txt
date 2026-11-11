@@ -17,6 +17,7 @@
 - [Conway Derivations](docs/conway-derivations.md): Detailed treatise proving how 8 of 10 principles derive from Conway's Law as a design tendency.
 - [Human Implementation Guide](docs/guides/human-guide.md): Practical guidance for applying principles as diagnostic lenses in teams.
 - [AI Agent Operational Protocol](docs/guides/agent-guide.md): Complete protocol for AI agents (read, analyze, cite, propose; human ownership; non-dogma).
+- [Agent & Ecosystem Integration Strategy](docs/guides/integration-strategy.md): Adoption guide and installation patterns for Claude Code, Antigravity, OpenAI Codex, and OpenHarness.
 - [Principles Deep Dives](docs/principles/index.md): Architectural deep dives for principles P01 through P10.
 
 ## Applied Practice Layer (Uzado)

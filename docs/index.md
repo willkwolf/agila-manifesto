@@ -10,9 +10,10 @@ Welcome to the **Agila Manifesto v3.1 OpenWiki**. This knowledge base provides c
 - [**Architecture Overview**](architecture.md): The socio-technical architecture of the Agila Manifesto repository, canon parity, agent protocol, and 3-tier governance.
 - [**Conway Derivations (8 of 10)**](conway-derivations.md): Formal analysis demonstrating how 8 of 10 principles derive from Conway's Law and its mathematical corollaries as a design tendency.
 
-### 2. Implementation Guides
+### 2. Implementation & Integration Guides
 - [**Human Implementation Guide**](guides/human-guide.md): Applying the principles as diagnostic lenses, inverse Conway maneuvers, team cognitive load partitioning, and boundary covenants.
 - [**AI Agent Protocol Guide**](guides/agent-guide.md): Operational guide for LLMs and autonomous coding tools (read, analyze, cite, propose; mandatory human sponsorship; zero canon modification).
+- [**Agent & Ecosystem Integration Strategy**](guides/integration-strategy.md): Adoption guide and installation patterns for Claude Code, Antigravity, OpenAI Codex, and OpenHarness, with case studies on complementary contracts (e.g., `product-engineering`).
 
 ### 3. The 10 Principles Deep Dives
 - [**Principles Overview & Matrix**](principles/index.md): Comparative analysis and theoretical grounding matrix across all 10 principles.

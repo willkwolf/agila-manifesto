@@ -74,3 +74,4 @@ When generating an architectural assessment or recommendations artifact, format 
 - English Skill: [`skills/agila-manifesto-en/SKILL.md`](skills/agila-manifesto-en/SKILL.md)
 - Conway Derivations: [`docs/conway-derivations.md`](docs/conway-derivations.md)
 - Operational Agent Guide: [`docs/guides/agent-guide.md`](docs/guides/agent-guide.md)
+- Integration Strategy & Harnesses: [`docs/guides/integration-strategy.md`](docs/guides/integration-strategy.md)
