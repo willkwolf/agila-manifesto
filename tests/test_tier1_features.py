@@ -601,6 +601,8 @@ class TestTier1GitHygieneAndLaunch(unittest.TestCase):
             REPO_ROOT / "LAUNCH-CHECKLIST.md",
         ]
         found = any(p.is_file() for p in candidate_paths)
+        if not found and os.environ.get("CI"):
+            self.skipTest("External LAUNCH-CHECKLIST.md not bundled in CI environment")
         self.assertTrue(
             found,
             "LAUNCH-CHECKLIST.md not found at C:\\Dev\\LAUNCH-CHECKLIST.md or parent directory.",
@@ -614,6 +616,8 @@ class TestTier1GitHygieneAndLaunch(unittest.TestCase):
             REPO_ROOT / "LAUNCH-CHECKLIST.md",
         ]
         target = next((p for p in candidate_paths if p.is_file()), None)
+        if not target and os.environ.get("CI"):
+            self.skipTest("External LAUNCH-CHECKLIST.md not bundled in CI environment")
         self.assertIsNotNone(target, "LAUNCH-CHECKLIST.md missing")
         with open(target, "r", encoding="utf-8") as f:
             content = f.read().lower()
