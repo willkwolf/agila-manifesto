@@ -95,37 +95,15 @@ def parse_simple_yaml(text: str) -> Dict[str, Any]:
     except ImportError:
         pass
 
-    result: Dict[str, Any] = {}
-    lines = text.splitlines()
-    i = 0
-    while i < len(lines):
-        line = lines[i].rstrip()
-        if not line or line.strip().startswith("#"):
-            i += 1
-            continue
-        m = re.match(r"^([a-zA-Z0-9_\-]+):\s*(.*)$", line)
-        if m:
-            key, val = m.group(1), m.group(2).strip()
-            if val == "":
-                sub_lines: List[str] = []
-                i += 1
-                while i < len(lines) and (lines[i].startswith("  ") or not lines[i].strip()):
-                    sub_lines.append(lines[i])
-                    i += 1
-                result[key] = _parse_yaml_block(sub_lines)
-                continue
-            else:
-                result[key] = _parse_val(val)
-        i += 1
-    return result
+    res = _parse_yaml_node(text.splitlines())
+    return res if isinstance(res, dict) else {}
 
 
 def _parse_val(val: str) -> Any:
     val = val.strip()
-    if val.startswith('"') and val.endswith('"') and len(val) >= 2:
-        return val[1:-1]
-    if val.startswith("'") and val.endswith("'") and len(val) >= 2:
-        return val[1:-1]
+    if (val.startswith('"') and val.endswith('"')) or (val.startswith("'") and val.endswith("'")):
+        if len(val) >= 2:
+            return val[1:-1]
     if val.lower() == "true":
         return True
     if val.lower() == "false":
@@ -141,52 +119,92 @@ def _parse_val(val: str) -> Any:
     return val
 
 
-def _parse_yaml_block(lines: List[str]) -> Any:
-    non_empty = [ln for ln in lines if ln.strip()]
+def _parse_yaml_node(lines: List[str]) -> Any:
+    non_empty = [ln for ln in lines if ln.strip() and not ln.strip().startswith("#")]
     if not non_empty:
         return None
+    base_indent = len(non_empty[0]) - len(non_empty[0].lstrip())
+
     if non_empty[0].lstrip().startswith("- "):
         items: List[Any] = []
-        cur_item_lines: List[str] = []
+        cur_lines: List[str] = []
         for ln in lines:
-            if ln.lstrip().startswith("- "):
-                if cur_item_lines:
-                    items.append(_parse_yaml_item(cur_item_lines))
-                    cur_item_lines = []
-                cur_item_lines.append(ln)
+            if not ln.strip() or ln.strip().startswith("#"):
+                if cur_lines:
+                    cur_lines.append(ln)
+                continue
+            indent = len(ln) - len(ln.lstrip())
+            if ln.lstrip().startswith("- ") and indent == base_indent:
+                if cur_lines:
+                    items.append(_parse_single_item(cur_lines, base_indent))
+                    cur_lines = []
+                cur_lines.append(ln)
             else:
-                cur_item_lines.append(ln)
-        if cur_item_lines:
-            items.append(_parse_yaml_item(cur_item_lines))
+                cur_lines.append(ln)
+        if cur_lines:
+            items.append(_parse_single_item(cur_lines, base_indent))
         return items
     else:
-        subdict: Dict[str, Any] = {}
-        for ln in lines:
-            s = ln.strip()
-            if not s or s.startswith("#"):
+        result: Dict[str, Any] = {}
+        i = 0
+        while i < len(lines):
+            ln = lines[i]
+            if not ln.strip() or ln.strip().startswith("#"):
+                i += 1
                 continue
-            m = re.match(r"^([a-zA-Z0-9_\-]+):\s*(.*)$", s)
-            if m:
-                subdict[m.group(1)] = _parse_val(m.group(2))
-        return subdict
+            indent = len(ln) - len(ln.lstrip())
+            if indent == base_indent:
+                m = re.match(r"^([a-zA-Z0-9_\-]+):\s*(.*)$", ln.strip())
+                if m:
+                    key = m.group(1)
+                    raw_val = m.group(2).strip()
+                    if raw_val == "":
+                        sub_lines: List[str] = []
+                        i += 1
+                        while i < len(lines):
+                            sub_ln = lines[i]
+                            if not sub_ln.strip():
+                                sub_lines.append(sub_ln)
+                                i += 1
+                                continue
+                            if sub_ln.strip().startswith("#"):
+                                i += 1
+                                continue
+                            sub_indent = len(sub_ln) - len(sub_ln.lstrip())
+                            if sub_indent > base_indent:
+                                sub_lines.append(sub_ln)
+                                i += 1
+                            else:
+                                break
+                        result[key] = _parse_yaml_node(sub_lines)
+                        continue
+                    else:
+                        result[key] = _parse_val(raw_val)
+            i += 1
+        return result
 
 
-def _parse_yaml_item(lines: List[str]) -> Any:
-    first = lines[0].lstrip()[2:].strip()
-    if not lines[1:] and ":" not in first:
-        return _parse_val(first)
-    item_dict: Dict[str, Any] = {}
-    if first and ":" in first:
-        k, v = first.split(":", 1)
-        item_dict[k.strip()] = _parse_val(v.strip())
-    for ln in lines[1:]:
-        s = ln.strip()
-        if not s or s.startswith("#"):
-            continue
-        m = re.match(r"^([a-zA-Z0-9_\-]+):\s*(.*)$", s)
-        if m:
-            item_dict[m.group(1)] = _parse_val(m.group(2))
-    return item_dict
+def _parse_single_item(lines: List[str], base_indent: int) -> Any:
+    first = lines[0]
+    rest_of_first = first.lstrip()[2:].strip()
+    non_empty_rest = [ln for ln in lines[1:] if ln.strip() and not ln.strip().startswith("#")]
+
+    is_key_value = False
+    if ":" in rest_of_first:
+        k_candidate = rest_of_first.split(":", 1)[0].strip()
+        if re.match(r"^[a-zA-Z0-9_\-]+$", k_candidate):
+            is_key_value = True
+
+    if is_key_value:
+        prefix = " " * (base_indent + 2)
+        norm_lines = [prefix + first.lstrip()[2:]] + lines[1:]
+        return _parse_yaml_node(norm_lines)
+    else:
+        if not non_empty_rest:
+            return _parse_val(rest_of_first)
+        else:
+            return _parse_val(rest_of_first)
+
 
 
 # ==============================================================================
