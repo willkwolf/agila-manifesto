@@ -20,6 +20,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Configure local git exclusions
+        run: |
+          mkdir -p .git/info
+          cat << 'EOF' >> .git/info/exclude
+          .agents
+          TEST_READY.md
+          *.prompt
+          ORIGINAL_REQUEST.md
+          EOF
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
